@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+if ! $(grep "https://github.com/PatrikAAberg/dmce-examples.git" .git/config &>/dev/null); then
+    echo "Please execute this script from the dmce-examples git root"
+    exit 1
+fi
+
+if [ ! -f "${HOME}/.dmceconfig" ]; then
+    echo "${HOME}/.dmceconfig not found, please run dmce-configure-local or dmce-configure-global"
+    exit 1
+fi
+
+cat ${HOME}/.dmceconfig | grep -vE '^$|#|DMCE_PROBE_SOURCE|DMCE_PROBE_PROLOG|DMCE_NUM_DATA_VARS' > ./.dmceconfig
+
+echo "DMCE_PROBE_SOURCE:/usr/share/dmce/dmce-probe-trace-atexit-D5-CB.c" >> .dmceconfig
+echo "DMCE_PROBE_PROLOG:/usr/share/dmce/dmce-prolog-trace-D5.c" >> .dmceconfig
+echo "DMCE_NUM_DATA_VARS:5" >> .dmceconfig
+
+echo "Successfully created a .dmceconfig in this git for dmce trace"
