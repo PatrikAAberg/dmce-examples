@@ -10,6 +10,15 @@ if [ ! -f "${HOME}/.dmceconfig" ]; then
     exit 1
 fi
 
+if [ ! -f "/usr/share/dmce/dmce-probe-trace-atexit-D5-CB.c" ]; then
+    echo "The trace probe dmce-probe-trace-atexit-D5-CB.c was not found at the specified path in ${HOME}/.dmceconfig"
+    echo "Please run dmce-configure-global (available through dmce package install) or manually update the following configurations in ${HOME}/.dmceconfig:"
+    echo "DMCE_PROBE_SOURCE:path-to-my-dmce-directory/dmce-probe-trace-atexit-D5-CB.c"
+    echo "DMCE_PROBE_PROLOG:path-to-my-dmce-directory/dmce-prolog-trace-D5.c"
+    echo "DMCE_NUM_DATA_VARS:5"
+    exit 1
+fi
+
 cat ${HOME}/.dmceconfig | grep -vE '^$|#|DMCE_PROBE_SOURCE|DMCE_PROBE_PROLOG|DMCE_NUM_DATA_VARS' > ./.dmceconfig
 
 echo "DMCE_PROBE_SOURCE:/usr/share/dmce/dmce-probe-trace-atexit-D5-CB.c" >> .dmceconfig
