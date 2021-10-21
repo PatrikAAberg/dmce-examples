@@ -25,8 +25,8 @@ echo "DMCE_PROBE_SOURCE:/usr/share/dmce/dmce-probe-user.c" >> .dmceconfig
 echo "DMCE_PROBE_PROLOG:/usr/share/dmce/dmce-prolog-default.c" >> .dmceconfig
 echo "DMCE_NUM_DATA_VARS:0" >> .dmceconfig
 
-echo "simple" > /root/.config/dmce/dmce.include
-echo "simplecrash" > /root/.config/dmce/dmce.exclude
+echo "simple" > /home/$USER/.config/dmce/dmce.include
+echo "simplecrash" > /home/$USER/.config/dmce/dmce.exclude
 
 
 echo "Successfully created a .dmceconfig in this git for the simple example"
