@@ -25,6 +25,6 @@ echo "DMCE_PROBE_SOURCE:/usr/share/dmce/dmce-probe-user-atexit.c" >> .dmceconfig
 echo "DMCE_PROBE_PROLOG:/usr/share/dmce/dmce-prolog-default.c" >> .dmceconfig
 echo "DMCE_NUM_DATA_VARS:0" >> .dmceconfig
 
-echo "patchcov" > /home/$USER/.config/dmce.include
+echo "patchcov" > $HOME/.config/dmce.include
 
 echo "Successfully created a .dmceconfig in this git for the patch coverage example"

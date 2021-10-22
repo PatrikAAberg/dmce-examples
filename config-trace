@@ -25,6 +25,6 @@ echo "DMCE_PROBE_SOURCE:/usr/share/dmce/dmce-probe-trace-atexit-D5-CB.c" >> .dmc
 echo "DMCE_PROBE_PROLOG:/usr/share/dmce/dmce-prolog-trace-D5.c" >> .dmceconfig
 echo "DMCE_NUM_DATA_VARS:5" >> .dmceconfig
 
-echo "simplecrash" > /home/$USER/.config/dmce/dmce.include
+echo "simplecrash" > $HOME/.config/dmce/dmce.include
 
 echo "Successfully created a .dmceconfig in this git for dmce trace"
