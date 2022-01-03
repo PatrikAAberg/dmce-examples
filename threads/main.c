@@ -58,15 +58,15 @@ int main() {
     pthread_t thread2;
     pthread_t thread3;
 
-    pthread_create( &thread0, NULL, tfunc0, (void*) 0);
-    pthread_create( &thread1, NULL, tfunc1, (void*) 0);
-    pthread_create( &thread2, NULL, tfunc2, (void*) 0);
-    pthread_create( &thread3, NULL, tfunc3, (void*) 0);
+    pthread_create( &thread0, 0, tfunc0, (void*) 0);
+    pthread_create( &thread1, 0, tfunc1, (void*) 0);
+    pthread_create( &thread2, 0, tfunc2, (void*) 0);
+    pthread_create( &thread3, 0, tfunc3, (void*) 0);
 
-    pthread_join( thread0, NULL);
-    pthread_join( thread1, NULL);
-    pthread_join( thread2, NULL);
-    pthread_join( thread3, NULL);
+    pthread_join( thread0, 0);
+    pthread_join( thread1, 0);
+    pthread_join( thread2, 0);
+    pthread_join( thread3, 0);
 
     printf("All threads done! a: %d, b: %d, c:%d, d:%d\n", a, b, c, d);
     return 0;
