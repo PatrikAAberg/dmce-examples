@@ -1,0 +1,2 @@
+#!/bin/bash -e
+gcc -o loops loops.c main.c
