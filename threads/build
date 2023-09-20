@@ -1,2 +1,3 @@
 #!/bin/bash -e
 gcc -o threads -pthread main.c
+gcc -o trace-threads -pthread trace_threads.c
