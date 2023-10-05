@@ -11,6 +11,8 @@ volatile int b = 0;
 volatile int c = 0;
 volatile int d = 0;
 
+int buf[128 * 128];
+
 void wait(float time) {
 
     sleep(time);
@@ -178,9 +180,17 @@ void* tfunc3(void* p) {
     d = d + 4;
 }
 
+void fill(int* p) {
+
+    for (int i = 0; i < 10; i++) {
+
+        p[i] = i;
+    }
+}
+
 int main(int argc, char *argv[]) {
 
-    int dummy = 0;
+    float dummy = 0;
 
     if(argc > 1 ) {
         num_loops = atoi(argv[1]); 
@@ -230,16 +240,22 @@ int main(int argc, char *argv[]) {
 
     printf("All threads done! a: %d, b: %d, c:%d, d:%d\n", a, b, c, d);
 
-    dummy = 1;
+    fill(&buf[0]);
+
+//    DMCE_HEXDUMP(&buf[0], 15);
+
+    fill(&buf[10]);
+
+    fill(&buf[20]);
+
+    dummy = 0.1;
     wait(dummy);
 
-    dummy = 2;
-    wait(dummy);
+    dummy = 0.2;
 
-    dummy = 3;
-    wait(dummy);
+    for (int i = 0; i < 40; i++)
+        printf("%d\n", buf[i]);
 
-    dummy = -1;
     return dummy + 1;
 }
 
