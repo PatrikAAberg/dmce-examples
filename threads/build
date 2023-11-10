@@ -2,3 +2,4 @@
 gcc -o threads -pthread main.c
 gcc -o trace-threads -pthread trace_threads.c
 gcc -o trace-threads-hexdump -pthread trace_threads_hexdump.c
+gcc -o trace-threads-hexdump-printf -pthread trace_threads_hexdump_printf.c
